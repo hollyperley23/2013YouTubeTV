@@ -94,7 +94,7 @@ const server = corsAnywhere.createServer({
 });
 
 server.listen(8070, serverIp, () => {
-    console.log('CORS Anywhere proxy running on http://' + serverIp + ':8070');
+    console.log('CORS Anywhere proxy running on http://' + serverIp + ':8080');
 });
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
