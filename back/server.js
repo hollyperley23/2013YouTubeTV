@@ -44,7 +44,7 @@ const serverIp = settings.serverIp || "localhost";
 console.log("Loaded Server IP:", serverIp);
 
 const app = express();
-const port = 8090;
+const port = 80;
 const logsDir = path.join(__dirname, 'logs');
 
 app.use(bodyParser.json());
@@ -69,12 +69,12 @@ if (!fs.existsSync(logsDir)) {
 }
 
 const server = corsAnywhere.createServer({
-    originWhitelist: [`http://${serverIp}:8090`, '*', '""', '', 'null', "null"],
+    originWhitelist: [`http://${serverIp}:80`, '*', '""', '', 'null', "null"],
     removeHeaders: ['cookie', 'cookie2'],
     handleInitialRequest: (req, res) => {
         const origin = req.headers.origin;
 
-        if (origin === `http://${serverIp}:8090` || origin === '*') {
+        if (origin === `http://${serverIp}:80` || origin === '*') {
             res.setHeader('Access-Control-Allow-Origin', origin);
         } else {
             res.setHeader('Access-Control-Allow-Origin', '*');
